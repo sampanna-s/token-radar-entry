@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar: pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">◉</div>
+    <div>
+      <h1>Token Radar</h1>
+      <p class="tag">Pre-token protocols, ranked by what a launch would be worth — and how to farm each one.</p>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="panel model" id="model-box" aria-label="How the ranking works"></section>
+
+<section class="controls" aria-label="Filter and sort the board">
+  <label>Search <input id="q" type="search" placeholder="Name or slug…" autocomplete="off"></label>
+  <label>Category <select id="cat"><option value="">All categories</option></select></label>
+  <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+  <label class="check"><input id="watch" type="checkbox"> Watchlist only</label>
+  <label>Sort <select id="sort">
+    <option value="rank">Rank</option>
+    <option value="value">Implied value</option>
+    <option value="tvl">TVL</option>
+    <option value="growth">7-day change</option>
+    <option value="age">Age</option>
+  </select></label>
+  <span class="count" id="count"></span>
+</section>
+
+<main>
+  <section class="panel" id="board-panel" aria-label="Ranked board">
+    <table id="board">
+      <thead><tr>
+        <th data-sort="rank">#</th>
+        <th data-sort="name">Protocol</th>
+        <th data-sort="category">Category</th>
+        <th>Chains</th>
+        <th data-sort="tvl">TVL</th>
+        <th data-sort="growth">7d</th>
+        <th data-sort="age">Age</th>
+        <th data-sort="value">Implied value</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="empty" id="empty" hidden>No protocol matches this filter.</p>
+  </section>
+
+  <section class="panel detail" id="detail" aria-label="Protocol detail" hidden></section>
+
+  <section class="panel live" aria-label="Protocols whose token already trades">
+    <h2>Already trading — market value, not ranked</h2>
+    <p class="note">These protocols record a token, so the radar does not rank them. Their market caps are the market's own numbers, shown for contrast.</p>
+    <div class="live-grid" id="live"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Implied value is this entry's own claim, worked out from the snapshot's own figures — TVL, seven-day growth, and how long the protocol has run with no token recorded. It is not a prediction that a token will be issued, or when. A protocol on this board records no token in the snapshot; that is not proof it has none.</p>
+  <p>Snapshot 2026-11-14 · DefiLlama public protocols data · Model radar-2</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
